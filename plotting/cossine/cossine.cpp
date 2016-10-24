@@ -11,6 +11,7 @@ int main()
   std::cout<<"# enter the amplitude >";
   std::cin>>amp;
   
+  // amp*np.sin(freq*np.pi*t)
   for(double x=0.0; x<6.0; x+=0.01)
   {
     std::cout<<x<<' '<<amp*sin(freq*M_PI*x)<<' '<<amp*cos(freq*M_PI*x)<<'\n';
