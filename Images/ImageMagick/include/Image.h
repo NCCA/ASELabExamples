@@ -9,6 +9,9 @@ class Image
   public :
 
     explicit Image(size_t _width, size_t _height, size_t _pixelDepth=3);
+    // make sure we can't copy this class as it could be expensive.
+    Image(const Image &)=delete;
+    Image & operator=(const Image &)=delete;
     void setPixel(size_t _x, size_t _y, unsigned char _r,
                                         unsigned char _g,
                                         unsigned char _b);
