@@ -20,7 +20,7 @@ SOURCES=$$PWD/src/main.cpp \
 
 
 
-HEADERS =$$PWD/../common/include/Image.h \
+HEADERS =$$PWD/../common/Image.h \
          $$PWD/../common/Framebuffer.h
 
 
