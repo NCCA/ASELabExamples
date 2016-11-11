@@ -8,9 +8,13 @@
 #include <random>
 #include "Framebuffer.h"
 #include "Image.h"
-
+#include "Vec2.h"
+#include "Emitter.h"
 int main()
 {
+
+
+
 
     std::unique_ptr<frm::Framebuffer> framebuffer( new frm::Framebuffer());
     size_t width=1024;
@@ -18,32 +22,33 @@ int main()
     framebuffer->init(width, height, NULL);
 
     Image image(width,height);
-    image.setBackground(255,0,0);
+    image.setBackground(255,255,255);
 
     framebuffer->bind();
     framebuffer->poll();
 
-    framebuffer->title("Red Line");
-
+    framebuffer->title("Particle");
+    Vec2<int> pos(width/2,height/2);
+    Vec2<int> dir(1,1);
+    Emitter p(pos,2000000);
     while(!framebuffer->shouldClose())
     {
-      for(size_t frame=0; frame<width; ++frame )
-      {
-          image.setBackground(255,255,255);
-          for(size_t x=0; x<frame; ++x)
-          {
-            for(size_t y=80; y<120; ++y)
-              image.setPixel(x,y,255,0,0);
-                }
-          framebuffer->poll();
+      image.setBackground(255,255,255);
+      p.update();
+      p.draw(image);
+      framebuffer->image(image.get(),width,height);
+      framebuffer->draw();
+      framebuffer->poll();
 
-          framebuffer->image(image.get(), width, height);
-          framebuffer->draw();
-          if(framebuffer->shouldClose())
-            break;
-      }
     }
 
 
   return EXIT_SUCCESS;
 }
+
+
+
+
+
+
+
