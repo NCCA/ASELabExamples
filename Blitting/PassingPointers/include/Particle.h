@@ -12,7 +12,7 @@ class Particle
     void draw(Image &_i) const;
   private :
     Vec2<int> m_pos;
-    Emitter *m_emitter;
+    const Emitter *m_emitter;
     Vec2<int> m_dir;
     int m_life;
     int m_maxLife;
