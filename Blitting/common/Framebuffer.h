@@ -80,6 +80,7 @@ public:
    */
   void poll();
 
+
   /**
    * @brief      Set location of image data to be passed onto gpu
    *

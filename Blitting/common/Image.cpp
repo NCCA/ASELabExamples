@@ -9,6 +9,9 @@ Image::Image(size_t _width, size_t _height)
 
 void Image::setPixel(size_t _x, size_t _y, unsigned char _r,  unsigned char _g,unsigned char _b,unsigned char _a)
 {
+  // ignore out of range pixels
+  if( (_x <=0 || _x>=m_width) || (_y<=0 || _y>=m_height) )
+    return;
   size_t offset=(_y*c_pixelDepth * m_width) + _x*c_pixelDepth;
   m_data[offset]=_r;
   m_data[offset+1]=_g;
